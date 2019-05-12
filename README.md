@@ -1,5 +1,9 @@
+
+##Jenkins start up command 
+java -jar jenkins.war --httpPort=8088
+
+
 # weather-information-api
 Endpoint:
-
-current: http://localhost:9092/api/nextcitizen/weather/USA/dallas
-Forecast: http://localhost:9092/api/nextcitizen/forecast/USA/dallas
+Current: http://localhost:9092/api/nextcitizen/weather/{countryName}/{cityName}
+Forecast: http://localhost:9092/api/nextcitizen/forecast/{countryName}/{cityName}
