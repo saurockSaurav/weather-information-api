@@ -1,0 +1,8 @@
+com\demo\app\DAO\MongoNoSQLDAO.class
+com\demo\app\Controller\HttpRequestController.class
+com\demo\app\Exception\NotFoundException.class
+com\demo\app\Utility\JaxbDataTypeConverter.class
+com\demo\app\Configuration\DemoApplication.class
+com\demo\app\Service\ValidateURLService.class
+com\demo\app\DAO\OracelSqlDAO.class
+com\demo\app\Property\DemoProjectProperty.class

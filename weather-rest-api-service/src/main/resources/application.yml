@@ -1,0 +1,10 @@
+server:
+  port: 9092
+app:
+  weather:
+    api:
+      key: bd181c6a089a32723ace4042ec94c024
+spring:
+  cache:
+    caffeine:
+      spec: recordStats,maximumSize=500,expireAfterWrite=600s
