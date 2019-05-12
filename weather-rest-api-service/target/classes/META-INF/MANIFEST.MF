@@ -2,9 +2,10 @@ Manifest-Version: 1.0
 Implementation-Title: demo
 Implementation-Version: 1.0.2-RELEASE
 Built-By: Owner
-Implementation-Vendor-Id: com.example
+Implementation-Vendor-Id: com.nextcitizen.weather.app
 Build-Jdk: 1.8.0_211
-Implementation-URL: https://projects.spring.io/spring-boot/demo/
+Implementation-URL: https://projects.spring.io/spring-boot/weather-res
+ t-api-service/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.
 

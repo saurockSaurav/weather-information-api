@@ -1,8 +1,6 @@
-com\demo\app\DAO\MongoNoSQLDAO.class
-com\demo\app\Controller\HttpRequestController.class
-com\demo\app\Exception\NotFoundException.class
-com\demo\app\Utility\JaxbDataTypeConverter.class
-com\demo\app\Configuration\DemoApplication.class
-com\demo\app\Service\ValidateURLService.class
-com\demo\app\DAO\OracelSqlDAO.class
-com\demo\app\Property\DemoProjectProperty.class
+com\nextcitizen\weather\app\exception\NotFoundException.class
+com\nextcitizen\weather\app\utils\WeatherAppUtils.class
+com\nextcitizen\weather\app\properties\WeatherProperties.class
+com\nextcitizen\weather\app\controller\WeatherByZipAndCityController.class
+com\nextcitizen\weather\app\service\WeatherRestService.class
+com\nextcitizen\weather\app\configuration\WeatherRestApplication.class
