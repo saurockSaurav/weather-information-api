@@ -9,29 +9,15 @@
 		<version>1.5.20.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<artifactId>weather-rest-api-service</artifactId>
+	<groupId>com.nextcitizen.weather.app</groupId>
 	<version>1.0.2-RELEASE</version>
 	<name>demo</name>
 	<description>Demo project for Spring Boot</description>
-
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
-	<!-- https://mvnrepository.com/artifact/com.github.fedy2/yahoo-weather-java-api -->
-	<dependency>
-		<groupId>com.github.fedy2</groupId>
-		<artifactId>yahoo-weather-java-api</artifactId>
-		<version>2.0.2</version>
-		<exclusions>
-			<exclusion>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-simple</artifactId>
-			</exclusion>
-		</exclusions>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/commons-validator/commons-validator -->
 		<dependency>
 			<groupId>commons-validator</groupId>
 			<artifactId>commons-validator</artifactId>
@@ -65,5 +51,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
