@@ -1,33 +1,35 @@
 package com.nextcitizen.weather.app.controller;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nextcitizen.weather.app.service.WeatherRestService;
 
 @RestController
 @RequestMapping("/api/nextcitizen")
-public class WeatherByZipAndCityController {
+public class WeatherController {
 	
 	@Autowired
 	private WeatherRestService weatherRestService;
 	
 	/**
-	 * @param zipCode
-	 * @return List
+	 * @param countryName
+	 * @param cityName
+	 * @return weather Information
 	 */
 	@GetMapping(path = "/weather/{countryName}/{cityName}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Object  getCurrentWeather( @PathVariable String countryName,
-									  @PathVariable String cityName ) {
-		if(StringUtils.hasText(countryName) ) {
-			return weatherRestService.getCurrentWeather(countryName, cityName);
-		}
-		return null;
+	public @ResponseBody ResponseEntity<Object> getCurrentWeather( @NotNull @PathVariable String countryName,
+																   @NotNull @PathVariable String cityName ) {
+		return weatherRestService.getCurrentWeather(countryName, cityName);
 	}
 	
 	@GetMapping(path = "/forecast/{countryName}/{cityName}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -38,16 +40,5 @@ public class WeatherByZipAndCityController {
 		}
 		return null;
 	}
-	
-	/*@GetMapping(path = "/api/nextcitizen/weather", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Object getWeatherInformation( @NotNull  @RequestBody final Map<String, String> requestPayload ) {
-		if(!requestPayload.isEmpty()) {
-			weatherRestService.callWeatherServiceAPI(requestPayload.get(COUNTRY_NAME),
-								  requestPayload.get(CITY_NAME),
-								  requestPayload.get(ZIP_CODE));
-		}
-		return null;
-	}*/
-
 	
 }
