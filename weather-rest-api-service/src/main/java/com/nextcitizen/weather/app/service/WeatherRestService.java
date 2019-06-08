@@ -44,13 +44,13 @@ public class WeatherRestService {
 			URI url = new UriTemplate(WEATHER_URL).expand(city, country, this.apiKey);
 			logger.info("URL path {}", url);
 			if (url != null && weatherAppUtils.isValidURL(url.toString())) {
-				response = restTemplate.exchange(url, HttpMethod.POST, null, ResponsePOJO.class);
+				response = restTemplate.exchange(url, HttpMethod.GET, null, ResponsePOJO.class);
 				if (response == null) {
-					String message = "Invalid Http response received, response received is >>" + response;
+					String message = "Invalid Http response received, response received is :" + response;
 					throw new WeatherNotFoundException(message, url);
 				}
 			} else {
-				String message = "Invalid URL path, requested URL is >>" + url;
+				String message = "Invalid URL path, requested URL is :" + url;
 				throw new WeatherNotFoundException(message, url);
 			}
 

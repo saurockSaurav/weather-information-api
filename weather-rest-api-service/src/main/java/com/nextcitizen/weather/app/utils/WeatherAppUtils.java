@@ -4,20 +4,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.apache.commons.validator.routines.UrlValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nextcitizen.weather.app.service.ResponsePOJO;
 
 public class WeatherAppUtils {
 	
+	@Autowired
+	private  ResponsePOJO responsePOJO;
+	
 	public Map<String, String> userFriendlyInformation(final ResponsePOJO response) {
 		
 		HashMap<String, String> hashMap = new HashMap<>();
-		if (response != null) {
+		/*if (response != null) {
 			hashMap.put("City", response.getName());
-			hashMap.put("Timezone", response.getTimeZone());
-			hashMap.put("Base", response.getBase());
-			hashMap.put("Visibility", response.getVisibility());
-		}
+			hashMap.put("Timezone", responsePOJO.getTimeZone());
+			hashMap.put("Base", responsePOJO.getBase());
+			hashMap.put("Visibility", responsePOJO.getVisibility());
+		}*/
 		return hashMap;
 		
 	}
