@@ -19,29 +19,15 @@
 	</properties>
 	<dependencies>
 	<dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <version>1.18.4</version>
-        <scope>provided</scope>
-    </dependency>
-
-		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
-		<dependency>
-			<groupId>com.googlecode.json-simple</groupId>
-			<artifactId>json-simple</artifactId>
-			</dependency>
-
-		<dependency>
-			<groupId>commons-validator</groupId>
-			<artifactId>commons-validator</artifactId>
-			<version>1.4.0</version>
+		    <groupId>commons-validator</groupId>
+		    <artifactId>commons-validator</artifactId>
+		    <version>1.5.1</version>
 		</dependency>
+	<!-- spring framework dependencies> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
-		<!-- <dependency> <groupId>org.projectlombok</groupId> <artifactId>lombok</artifactId> 
-			<optional>true</optional> </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>

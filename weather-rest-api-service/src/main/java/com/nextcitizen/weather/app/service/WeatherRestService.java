@@ -62,7 +62,8 @@ public class WeatherRestService implements IWeatherService{
 			logger.error(message);
 			throw new WeatherNotFoundException(message, null);
 		}
-		logger.info("End of HTTP request/response ..!");
+	    
+		logger.info("End of HTTP request/response, response status code is: {}", response.getStatusCodeValue());
 		return ResponseEntity.ok(response.getBody());
 	}
 
