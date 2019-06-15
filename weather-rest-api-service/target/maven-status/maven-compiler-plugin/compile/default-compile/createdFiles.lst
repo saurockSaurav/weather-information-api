@@ -1,6 +1,9 @@
-com\nextcitizen\weather\app\exception\NotFoundException.class
 com\nextcitizen\weather\app\utils\WeatherAppUtils.class
 com\nextcitizen\weather\app\properties\WeatherProperties.class
-com\nextcitizen\weather\app\controller\WeatherByZipAndCityController.class
 com\nextcitizen\weather\app\service\WeatherRestService.class
+com\nextcitizen\weather\app\interfaces\IWeatherService.class
+com\nextcitizen\weather\app\service\ResponsePOJO.class
+com\nextcitizen\weather\app\exception\WeatherNotFoundException.class
+com\nextcitizen\weather\app\utils\CustomStringUtils.class
+com\nextcitizen\weather\app\controller\WeatherController.class
 com\nextcitizen\weather\app\configuration\WeatherRestApplication.class

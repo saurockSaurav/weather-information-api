@@ -13,16 +13,19 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
 
 import com.nextcitizen.weather.app.exception.WeatherNotFoundException;
+import com.nextcitizen.weather.app.interfaces.IWeatherService;
 import com.nextcitizen.weather.app.utils.WeatherAppUtils;
 
 @Service
-public class WeatherRestService {
+public class WeatherRestService implements IWeatherService{
 
 	private static final String WEATHER_URL = "http://api.openweathermap.org/data/2.5/weather?q={city},{country}&APPID={key}";
 
 	private static final String FORECAST_URL = "http://api.openweathermap.org/data/2.5/forecast?q={city},{country}&APPID={key}";
 
 	private final RestTemplate restTemplate;
+	
+	private final WeatherAppUtils weatherAppUtils = new WeatherAppUtils();
 
 	private final String apiKey;
 
@@ -34,10 +37,10 @@ public class WeatherRestService {
 	}
 
 	@Cacheable("weather")
+	@Override
 	public ResponseEntity<Object> getCurrentWeather(String country, String city) {
 
 		logger.info("Requesting current weather for {}/{}", country, city);
-		WeatherAppUtils weatherAppUtils = new WeatherAppUtils();
 		ResponseEntity<ResponsePOJO> response = null;
 
 		try {
@@ -59,15 +62,22 @@ public class WeatherRestService {
 			logger.error(message);
 			throw new WeatherNotFoundException(message, null);
 		}
+		logger.info("End of HTTP request/response ..!");
 		return ResponseEntity.ok(response.getBody());
 	}
 
-	@Cacheable("weather")
+	/*@Cacheable("weather")
 	public Object getForeCastWeather(String country, String city) {
 		logger.info("Requesting current weather for {}/{}", country, city);
 		URI url = new UriTemplate(FORECAST_URL).expand(city, country, this.apiKey);
 		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, null, String.class);
 		return response.getBody();
+	}*/
+
+	@Override
+	public ResponseEntity<Object> getForecastWeather(String countryName, String cityName) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -2,7 +2,6 @@ package com.nextcitizen.weather.app.service;
 
 public class ResponsePOJO {
 	
-	
 	private String visibility;
 	private String timeZone;
 	private String base;
