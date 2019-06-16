@@ -1,7 +1,9 @@
 package com.nextcitizen.weather.app.service;
 
 import java.net.URI;
+import java.util.HashMap;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -38,16 +40,17 @@ public class WeatherRestService implements IWeatherService{
 
 	@Cacheable("weather")
 	@Override
-	public ResponseEntity<Object> getCurrentWeather(String country, String city) {
+	public ResponseEntity<?> getCurrentWeather(String country, String city) {
 
-		logger.info("Requesting current weather for {}/{}", country, city);
-		ResponseEntity<ResponsePOJO> response = null;
+		logger.info("Step 1/4 Start of HTTP request/response ");
+		ResponseEntity<String>  response = null;
 
 		try {
 			URI url = new UriTemplate(WEATHER_URL).expand(city, country, this.apiKey);
-			logger.info("URL path {}", url);
+			logger.info("Step 2/4 Requesting current weather for {}/{}", country, city);
 			if (url != null && weatherAppUtils.isValidURL(url.toString())) {
-				response = restTemplate.exchange(url, HttpMethod.GET, null, ResponsePOJO.class);
+				logger.info("Step 3/4 URL path {}", url);
+				response = restTemplate.exchange(url, HttpMethod.GET, null, String.class);
 				if (response == null) {
 					String message = "Invalid Http response received, response received is :" + response;
 					throw new WeatherNotFoundException(message, url);
@@ -63,7 +66,8 @@ public class WeatherRestService implements IWeatherService{
 			throw new WeatherNotFoundException(message, null);
 		}
 	    
-		logger.info("End of HTTP request/response, response status code is: {}", response.getStatusCodeValue());
+		logger.info("Step 4/4 End of HTTP request/response, response status code is: {}", response.getStatusCodeValue());
+		logger.info("***************************************************************************************************");
 		return ResponseEntity.ok(response.getBody());
 	}
 

@@ -2,6 +2,7 @@ package com.nextcitizen.weather.app.controller;
 
 import javax.validation.constraints.NotNull;
 
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -29,10 +30,11 @@ public class WeatherController implements IWeatherService{
 	 * @param countryName
 	 * @param cityName
 	 * @return weather Information
+	 * @throws ParseException 
 	 */
 	@GetMapping(path = "/weather/{countryName}/{cityName}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<Object> getCurrentWeather(@NotNull @PathVariable String countryName,
-																  @NotNull @PathVariable String cityName) {
+	public @ResponseBody ResponseEntity<?> getCurrentWeather(@NotNull @PathVariable final String countryName,
+																  @NotNull @PathVariable final String cityName) throws ParseException {
 
 		if ( weatherAppUtils.isAlphabhate(countryName) && weatherAppUtils.isAlphabhate(cityName)) {
 			return weatherRestService.getCurrentWeather(countryName, cityName);

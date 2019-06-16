@@ -22,8 +22,8 @@ public abstract class CustomStringUtils extends org.springframework.util.StringU
     
 	public abstract boolean isAlphabhate(String value) ;
 	
-	public static boolean hasSpecialCharacter(String value) {
-		return !Pattern.matches("[a-zA-Z]+", value);
+	public static boolean doesNotHaveSpecialCharacter(String value) {
+		return Pattern.matches("[a-zA-Z]+", value);
 	}
 	
 	public static boolean isBlank(String value) {			

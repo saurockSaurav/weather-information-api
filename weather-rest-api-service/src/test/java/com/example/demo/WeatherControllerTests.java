@@ -19,22 +19,22 @@ public class WeatherControllerTests {
 	
 	@Test(expected = WeatherNotFoundException.class)
 	public void testGetCurrentWeatherWithNullCountryName() throws Exception {
-	    ResponseEntity<Object > obj=  weatherController.getCurrentWeather(null, "Dallas");
+	    ResponseEntity<?> obj=  weatherController.getCurrentWeather(null, "Dallas");
 	}
 	
 	@Test(expected = WeatherNotFoundException.class)
 	public void testGetCurrentWeatherWithNullCityName() throws Exception {
-	    ResponseEntity<Object > obj=  weatherController.getCurrentWeather("Delaware", null);
+	    ResponseEntity<?> obj=  weatherController.getCurrentWeather("Delaware", null);
 	}
 	
 	@Test(expected = WeatherNotFoundException.class)
 	public void testGetCurrentWeatherWithNumericCityName() throws Exception {
-	    ResponseEntity <Object > obj=  weatherController.getCurrentWeather("America", "123");
+	    ResponseEntity<?> obj=  weatherController.getCurrentWeather("America", "123");
 	}
 	
 	@Test(expected = WeatherNotFoundException.class)
 	public void testGetCurrentWeatherWithNumericCountryName() throws Exception {
-	    ResponseEntity<Object > obj=  weatherController.getCurrentWeather("123", "Dallas");
+	    ResponseEntity<?> obj=  weatherController.getCurrentWeather("123", "Dallas");
 	}
 
 }

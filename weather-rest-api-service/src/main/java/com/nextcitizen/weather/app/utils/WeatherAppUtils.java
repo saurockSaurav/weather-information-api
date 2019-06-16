@@ -14,7 +14,7 @@ public class WeatherAppUtils extends CustomStringUtils {
 	
 	@Override
 	public boolean isAlphabhate(String value) {
-		 if (value != null && ( value.trim().length() >=1 &&  !hasSpecialCharacter(value))) {
+		 if ( isNotBlank(value) &&  doesNotHaveSpecialCharacter(value)) {
 			 return true;
 		 }
 		 String message = " Illegal Value in weather HTTP request : " + value;
