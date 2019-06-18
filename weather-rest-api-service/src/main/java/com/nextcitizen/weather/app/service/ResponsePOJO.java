@@ -6,7 +6,6 @@ public class ResponsePOJO {
 	private String timeZone;
 	private String base;
 	private String name;
-	private sys sys;
 
 	public String getVisibility() {
 		return visibility;
@@ -42,14 +41,6 @@ public class ResponsePOJO {
 
 	public void setTimeZone(String timeZone) {
 		this.timeZone = timeZone;
-	}
-
-	public sys getSys() {
-		return sys;
-	}
-
-	public void setSys(sys sys) {
-		this.sys = sys;
 	}
 
 }
