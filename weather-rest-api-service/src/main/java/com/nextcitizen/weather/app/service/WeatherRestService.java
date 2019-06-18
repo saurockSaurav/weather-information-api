@@ -78,7 +78,6 @@ public class WeatherRestService implements IWeatherService {
 	private ResponseEntity<String> callWeatherService(String country, String city, String url) {
 
 		long methodStartTime = System.currentTimeMillis();
-
 		ResponseEntity<String> response = null;
 
 		try {
@@ -101,7 +100,10 @@ public class WeatherRestService implements IWeatherService {
 			logger.error(message);
 			throw new WeatherNotFoundException(message, null);
 		}
-
+		
+		//TODO implementation plan to prepare neat and only required JSON comming soon 
+		/** JSONObject jobject = displayUserFiendlyWeatherJSON(response.getBody()); **/
+		
 		logger.info("Step 4/4 End of HTTP request/response, response status code is: {} / Time taken {} ms ",
 				response.getStatusCodeValue(), System.currentTimeMillis() - methodStartTime);
 		logger.info("***************************************************************************************************");
@@ -109,8 +111,7 @@ public class WeatherRestService implements IWeatherService {
 	}
 
 	@Override
-	public JSONObject displayUserFiendlyWeatherJSON(ResponseEntity<?> httpResponse) {
-		// TODO Auto-generated method stub
+	public JSONObject displayUserFiendlyWeatherJSON(String httpResponse) {
 		return null;
 	}
 

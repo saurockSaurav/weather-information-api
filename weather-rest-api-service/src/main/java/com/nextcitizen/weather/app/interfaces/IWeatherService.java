@@ -12,17 +12,18 @@ public interface IWeatherService {
 	 * @return current weather condition
 	 * 
 	 */
-	public ResponseEntity<?> getCurrentWeather(String countryName, String cityName) throws ParseException;
+	public ResponseEntity<String> getCurrentWeather(final String countryName, final String cityName) throws ParseException;
 
 	/*
 	 * @param countryName, cityName
 	 * 
 	 * @return forecast weather condition
 	 */
-	public ResponseEntity<?> getForecastWeather(String countryName, String cityName);
+	public ResponseEntity<String> getForecastWeather(final String countryName, final String cityName);
 
 	/*
 	 * @return should return only needed information from HTTP Response
 	 */
-	public  JSONObject displayUserFiendlyWeatherJSON(ResponseEntity<?> httpResponse);
+	public JSONObject displayUserFiendlyWeatherJSON( final String httpResponse);
+
 }
