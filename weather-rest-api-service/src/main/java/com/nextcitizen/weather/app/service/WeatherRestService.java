@@ -49,7 +49,7 @@ public class WeatherRestService implements IWeatherService {
 
 		if (weatherAppUtils.isAlphabhate(country) && weatherAppUtils.isAlphabhate(city)) {
 			logger.info("Step 1/4 Start of HTTP request/response ");
-			return callWeatherService(country, city, WEATHER_URL);
+			return callWeatherAPI(country, city, WEATHER_URL);
 		} else {
 			String message = "Invalid weather request received for Country : " + country + " / City :" + city;
 			throw new WeatherNotFoundException(message, null);
@@ -62,7 +62,7 @@ public class WeatherRestService implements IWeatherService {
 	public ResponseEntity<String> getForecastWeather(String country, String city) {
 		if (weatherAppUtils.isAlphabhate(country) && weatherAppUtils.isAlphabhate(city)) {
 			logger.info("Step 1/4 Start of HTTP request/response ");
-			return callWeatherService(country, city, FORECAST_URL);
+			return callWeatherAPI(country, city, FORECAST_URL);
 		} else {
 			String message = "Invalid weather request received for Country : " + country + " / City :" + city;
 			throw new WeatherNotFoundException(message, null);
@@ -75,7 +75,7 @@ public class WeatherRestService implements IWeatherService {
 	 * @return
 	 * @throws WeatherNotFoundException
 	 */
-	private ResponseEntity<String> callWeatherService(String country, String city, String url) {
+	public ResponseEntity<String> callWeatherAPI(String country, String city, String url) {
 
 		long methodStartTime = System.currentTimeMillis();
 		ResponseEntity<String> response = null;
@@ -111,7 +111,7 @@ public class WeatherRestService implements IWeatherService {
 	}
 
 	@Override
-	public JSONObject displayUserFiendlyWeatherJSON(String httpResponse) {
+	public JSONObject displayUserFiendlyWeatherAPI(String httpResponse) {
 		return null;
 	}
 
