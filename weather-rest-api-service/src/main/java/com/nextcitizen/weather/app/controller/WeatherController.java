@@ -29,15 +29,15 @@ public class WeatherController {
 	 */
 	@GetMapping(path = "/weather/{countryName}/{cityName}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity<String> getCurrentWeather(@NotNull @PathVariable final String countryName,
-															      @NotNull @PathVariable final String cityName){
+															      @NotNull @PathVariable final String cityName) throws WeatherNotFoundException{
 
 		return weatherRestService.getCurrentWeather(countryName, cityName);
 	}
 
 	@GetMapping(path = "/forecast/{countryName}/{cityName}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public @ResponseBody ResponseEntity<String> getForecastWeather( @NotNull @PathVariable String countryName,
-															        @NotNull @PathVariable String cityName ) {
+															        @NotNull @PathVariable String cityName ) throws WeatherNotFoundException {
 		return weatherRestService.getForecastWeather(countryName, cityName);
 	}
-	
+
 }

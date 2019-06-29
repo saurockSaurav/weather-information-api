@@ -17,8 +17,11 @@ public class WeatherAppUtils extends CustomStringUtils {
 		 if ( isNotBlank(value) &&  doesNotHaveSpecialCharacter(value)) {
 			 return true;
 		 }
-		 String message = " Illegal Value in weather HTTP request : " + value;
-		 throw new WeatherNotFoundException( message, null);
+		 else {
+			 return false;
+		 }
+		 //String message = " Illegal Value in weather HTTP request : " + value;
+		 //throw new WeatherNotFoundException( message);
 	}
 	
 }

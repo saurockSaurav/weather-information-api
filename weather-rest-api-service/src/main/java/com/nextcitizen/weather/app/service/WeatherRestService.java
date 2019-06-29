@@ -2,7 +2,6 @@ package com.nextcitizen.weather.app.service;
 
 import java.net.URI;
 
-import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.client.RestTemplateBuilder;
@@ -79,9 +78,10 @@ public class WeatherRestService implements IWeatherService {
 
 		long methodStartTime = System.currentTimeMillis();
 		ResponseEntity<String> response = null;
+		URI expandURL = new UriTemplate(url).expand(city, country, this.apiKey);
 
 		try {
-			URI expandURL = new UriTemplate(url).expand(city, country, this.apiKey);
+			
 			logger.info("Step 2/4 Requesting current weather for {}/{}", country, city);
 			if (expandURL != null && weatherAppUtils.isValidURL(expandURL.toString())) {
 				logger.info("Step 3/4 URL path {}", expandURL);
@@ -91,17 +91,22 @@ public class WeatherRestService implements IWeatherService {
 					throw new WeatherNotFoundException(message, expandURL);
 				}
 			} else {
-				String message = "Invalid URL path, requested URL is :" + expandURL;
+				String message = "Invalid Http requst, requested URL is :" + expandURL;
 				throw new WeatherNotFoundException(message, expandURL);
 			}
 
-		} catch (Exception exp) {
-			String message = "Could not process weather request, Exception occured due to :" + exp.getMessage();
+		}
+		catch (IllegalArgumentException illegalArgumentException) {
+			String message = "IllegalArgumentException caught in response, Exception occured due to "+ illegalArgumentException;
 			logger.error(message);
-			throw new WeatherNotFoundException(message, null);
+			throw new WeatherNotFoundException(message, expandURL);
+		}
+		catch (Exception anyException) {
+			String message = "Exception caught in response, Exception occured due to " + anyException;
+			throw new WeatherNotFoundException(message, expandURL);
 		}
 		
-		//TODO implementation plan to prepare neat and only required JSON comming soon 
+		//TODO implementation plan to prepare neat and only required JSON 
 		/** JSONObject jobject = displayUserFiendlyWeatherJSON(response.getBody()); **/
 		
 		logger.info("Step 4/4 End of HTTP request/response, response status code is: {} / Time taken {} ms ",
@@ -111,7 +116,7 @@ public class WeatherRestService implements IWeatherService {
 	}
 
 	@Override
-	public JSONObject displayUserFiendlyWeatherAPI(String httpResponse) {
+	public <T> ResponseEntity<T> displayUserFiendlyWeatherAPI(T httpResponse) {
 		return null;
 	}
 

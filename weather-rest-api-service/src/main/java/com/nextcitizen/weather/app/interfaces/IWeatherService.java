@@ -1,6 +1,5 @@
 package com.nextcitizen.weather.app.interfaces;
 
-import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.springframework.http.ResponseEntity;
 
@@ -31,6 +30,7 @@ public interface IWeatherService {
 	/*
 	 * @return should return only needed information from HTTP Response
 	 */
-	JSONObject displayUserFiendlyWeatherAPI( final String httpResponse);
+	
+	<T> ResponseEntity<T> displayUserFiendlyWeatherAPI(T httpResponse);
 
 }
